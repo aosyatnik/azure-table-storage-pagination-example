@@ -1,0 +1,25 @@
+<table mat-table [dataSource]="logsTableSource">
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let log">
+      <div class="date">
+        {{ log.timestamp | date | lowercase }}
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="text">
+    <th mat-header-cell *matHeaderCellDef>Text</th>
+    <td mat-cell *matCellDef="let log">
+      <div class="date">
+        {{ log.text }}
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
